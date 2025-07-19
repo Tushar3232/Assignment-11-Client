@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import axios from 'axios';
 
@@ -20,10 +20,18 @@ const Authprovider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email,password);
     }
 
+    // Sign Out handle 
+    const SignOutUser = ()=>{
+        setLoding(true)
+        return signOut(auth)
+    }
+
+
     // Objerber setup 
     useEffect(()=>{
         const unSubscribe = onAuthStateChanged(auth,(currentUser)=>{
             setUser(currentUser);
+            setLoding(false);
             console.log('user in ths auth state change',user)
             console.log(currentUser)
 
@@ -46,6 +54,7 @@ const Authprovider = ({ children }) => {
         loding,
         CreateUser,
         SigninUser,
+        SignOutUser
     }
     return (
         <AuthContext value={authData}>

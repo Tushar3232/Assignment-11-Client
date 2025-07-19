@@ -3,7 +3,19 @@ import { Link, Navigate, NavLink } from 'react-router';
 import { AuthContext } from '../Constexts/AuthContext';
 
 const Navber = () => {
-    const { user } = use(AuthContext)
+    const { user,SignOutUser } = use(AuthContext)
+    console.log(user)
+    // handle sign Out user 
+    const handleSignOut= ()=>{
+        SignOutUser()
+        .then(()=>{
+            alert("sign Out user")
+        })
+        .catch(error=>{
+            alert(error)
+        })
+        
+    }
     
     const link = <>
     <NavLink to="/" >Home</NavLink>
@@ -40,7 +52,7 @@ const Navber = () => {
                 </div>
                 <div className="navbar-end ">
                     {
-                        user ? <button>signOut</button> :
+                        user ? <button onClick={handleSignOut} className='btn'>signOut</button> :
                             <Link to="/login" className="btn">login</Link>
                     }
                     <div className="dropdown dropdown-end dropdown-hover">
