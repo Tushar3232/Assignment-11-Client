@@ -7,7 +7,7 @@ import ImportantInfoSection from '../../Componeants/ImportantInfoSection';
 const Home = () => {
     return (
         <div>
-            <h1 className=' text-7xl text-center'>this is home</h1>
+          
             <Slider></Slider>
             <FeaturedFoods></FeaturedFoods>
 
