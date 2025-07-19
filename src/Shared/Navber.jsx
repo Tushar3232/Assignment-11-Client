@@ -10,6 +10,7 @@ const Navber = () => {
     <NavLink to="/addfood" >Add Food</NavLink>
     <NavLink to="/availableFoods">Available Foods</NavLink>
     <NavLink to="/myfoods" >My foods</NavLink>
+    <NavLink to="/myfoddrequsted" >My Requsted Foods</NavLink>
     </>
     return (
         <div>

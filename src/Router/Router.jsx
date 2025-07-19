@@ -11,6 +11,8 @@ import FoodDetails from "../Pages/FoodDetails";
 import axios from "axios";
 import MyFoods from "../Pages/MyFoods";
 import UpdateFood from "../Pages/UpdateFood";
+import MyFoodRequest from "../Pages/MyFoodRequest";
+
 
 
 const router = createBrowserRouter([
@@ -38,6 +40,7 @@ const router = createBrowserRouter([
         path:"/myfoods",
         element: <MyFoods></MyFoods>
       },
+    
       {
         path: "/availableFoods",
         element: <AvailableFoods></AvailableFoods>,
@@ -60,6 +63,10 @@ const router = createBrowserRouter([
           return data
           }
           
+        },
+        {
+          path: "/myfoddrequsted",
+          element: <MyFoodRequest></MyFoodRequest>
         }
     ]
   },
