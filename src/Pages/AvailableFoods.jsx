@@ -6,7 +6,7 @@ const AvailableFoods = () => {
     const AvailableFoods = useLoaderData();
     console.log(AvailableFoods)
     return (
-        <div>
+        <div className=' mb-44'>
             <h1 className=' text-7xl text-center my-16'>Available Foods</h1>
           <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5 '>
               {

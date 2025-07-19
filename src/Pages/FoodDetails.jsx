@@ -21,7 +21,7 @@ const FoodDetails = () => {
 
   // handle food requst 
   const handleRequest = () => {
-    axios.patch(`http://localhost:3000/requsted/${_id}`, {}, {
+    axios.patch(`https://assignment-11-server-bay-psi.vercel.app/requsted/${_id}`, {}, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`
       }

@@ -9,7 +9,7 @@ const MyFoods = () => {
     console.log(foods)
 
     useEffect(() => {
-        axios.get(`http://localhost:3000/my-foodsdata`, {
+        axios.get(`https://assignment-11-server-bay-psi.vercel.app/my-foodsdata`, {
             headers: {
                 Authorization: `Bearer ${ user.accessToken}`
             }
@@ -20,7 +20,7 @@ const MyFoods = () => {
 
 
     return (
-       <div>
+       <div className=' mb-32'>
         <h1 className=' text-7xl text-center my-24'>My Foods</h1>
          <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-11/12 mx-auto'>
             {

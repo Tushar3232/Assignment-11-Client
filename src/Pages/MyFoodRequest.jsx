@@ -11,7 +11,7 @@ const MyFoodRequest = () => {
       const token = localStorage.getItem("access-token");
       console.log(token)
       try {
-        const res = await axios.get("http://localhost:3000/my-requests", {
+        const res = await axios.get("https://assignment-11-server-bay-psi.vercel.app/my-requests", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

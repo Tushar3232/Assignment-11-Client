@@ -36,7 +36,7 @@ const Authprovider = ({ children }) => {
             console.log(currentUser)
 
             // apadoto delam _____ ____ ____------____------___----|
-            axios.get("http://localhost:3000",{
+            axios.get("https://assignment-11-server-bay-psi.vercel.app",{
                 headers:{
                     Authorization:`Bearer ${currentUser.accessToken}`
                 }

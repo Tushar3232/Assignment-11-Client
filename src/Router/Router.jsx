@@ -12,6 +12,7 @@ import axios from "axios";
 import MyFoods from "../Pages/MyFoods";
 import UpdateFood from "../Pages/UpdateFood";
 import MyFoodRequest from "../Pages/MyFoodRequest";
+import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -34,24 +35,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/addfood",
-        element: <AddFood></AddFood>
+        element: <PrivateRoute>
+          <AddFood></AddFood>
+        </PrivateRoute>
       },
       {
         path:"/myfoods",
-        element: <MyFoods></MyFoods>
+        element: <PrivateRoute>
+          <MyFoods></MyFoods>
+        </PrivateRoute>
       },
     
       {
         path: "/availableFoods",
         element: <AvailableFoods></AvailableFoods>,
-        loader: () => fetch(`http://localhost:3000/available-foods`)
+        loader: () => fetch(`https://assignment-11-server-bay-psi.vercel.app/available-foods`)
 
       },
       {
         path: "/details/:foodId",
-        element: <FoodDetails></FoodDetails>,
+        element: <PrivateRoute>
+          <FoodDetails></FoodDetails>
+        </PrivateRoute>,
         loader: async ({ params }) =>{
-          const {data}= await axios.get(`http://localhost:3000/detailsFood/${params.foodId}`)
+          const {data}= await axios.get(`https://assignment-11-server-bay-psi.vercel.app/detailsFood/${params.foodId}`)
           return data
         }
         },
@@ -59,14 +66,16 @@ const router = createBrowserRouter([
           path:"/updateFood/:foodId",
           element: <UpdateFood></UpdateFood>,
           loader: async ({params}) =>{
-             const {data}= await axios.get(`http://localhost:3000/detailsFood/${params.foodId}`)
+             const {data}= await axios.get(`https://assignment-11-server-bay-psi.vercel.app/detailsFood/${params.foodId}`)
           return data
           }
           
         },
         {
           path: "/myfoddrequsted",
-          element: <MyFoodRequest></MyFoodRequest>
+          element: <PrivateRoute>
+            <MyFoodRequest></MyFoodRequest>
+          </PrivateRoute>
         }
     ]
   },

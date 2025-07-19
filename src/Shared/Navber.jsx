@@ -17,16 +17,21 @@ const Navber = () => {
         
     }
     
+
+    const getActiveClass = ({ isActive }) =>
+  isActive ? "text-orange-500 font-bold underline" : "text-gray-600";
+
+
     const link = <>
-    <NavLink to="/" >Home</NavLink>
-    <NavLink to="/addfood" >Add Food</NavLink>
-    <NavLink to="/availableFoods">Available Foods</NavLink>
-    <NavLink to="/myfoods" >My foods</NavLink>
-    <NavLink to="/myfoddrequsted" >My Requsted Foods</NavLink>
+    <NavLink to="/" className={getActiveClass} >Home</NavLink>
+    <NavLink to="/addfood" className={getActiveClass}>Add Food</NavLink>
+    <NavLink to="/availableFoods" className={getActiveClass}>Available Foods</NavLink>
+    <NavLink to="/myfoods" className={getActiveClass}>My foods</NavLink>
+    <NavLink to="/myfoddrequsted" className={getActiveClass}>My Requsted Foods</NavLink>
     </>
     return (
         <div>
-            <div className="navbar bg-base-100 shadow-sm">
+            <div className="navbar bg-slate-100 shadow-sm">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

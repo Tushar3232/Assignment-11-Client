@@ -32,7 +32,7 @@ const AddFood = () => {
         const Data = {...formData, ownerEmail: user.email , status: "available"}
 
         try {
-            const res = await axios.post("http://localhost:3000/add-food", Data);
+            const res = await axios.post("https://assignment-11-server-bay-psi.vercel.app/add-food", Data);
             console.log("Successfully submitted:", res.data);
             // Optional: Reset form
             setFormData({

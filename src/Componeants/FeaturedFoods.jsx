@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 const FeaturedFoods = () => {
     const  [featuredFoods, setFeaturedFoods]= useState([])
     useEffect(()=>{
-        axios.get("http://localhost:3000/featured-foods")
+        axios.get("https://assignment-11-server-bay-psi.vercel.app/featured-foods")
         .then(res=> {
             setFeaturedFoods(res.data)
         })

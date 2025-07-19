@@ -22,7 +22,7 @@ const MyfoodCard = ({food,setFoods}) => {
   if (!confirm) return;
 
   try {
-    const response = await axios.delete(`http://localhost:3000/my-foodsdata/${_id}`);
+    const response = await axios.delete(`https://assignment-11-server-bay-psi.vercel.app/my-foodsdata/${_id}`);
     
     if (response.data.deletedCount > 0) {
       Swal.fire("Deleted!", "Your food has been deleted.", "success");

@@ -23,7 +23,7 @@ const UpdateFood = () => {
     // update and send data in data base
     try {
       const res = await axios.put(
-        `http://localhost:3000/updated-food/${foodData._id}`,
+        `https://assignment-11-server-bay-psi.vercel.app/updated-food/${foodData._id}`,
         updatedFood,
         {
           headers: {
