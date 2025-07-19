@@ -88,7 +88,7 @@ const MyfoodCard = ({food,setFoods}) => {
 
             <button onClick={()=>handleDelete(_id)} className='btn btn-xs'>Delet</button>
 
-            <Link to={`/details/${_id}`} className='btn btn-soft btn-primary btn-xs'>View Details</Link>
+            <Link to={`/updateFood/${_id}`} className='btn btn-soft btn-primary btn-xs'>update</Link>
           </div>
         </div>
       </div>
