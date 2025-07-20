@@ -1,62 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Constexts/AuthContext';
 import axios from 'axios';
+import MyfoodCard from '../Componeants/MyfoodCard';
+import RequestedFoodCard from '../Componeants/RequestedFoodCard';
 
 const MyFoodRequest = () => {
-  const { user } = useContext(AuthContext);
-  const [requestedFoods, setRequestedFoods] = useState([]);
+     const { user } = useContext(AuthContext);
+    const [foods, setFoods] = useState([])
+    console.log(foods)
 
-  useEffect(() => {
-    const fetchRequestedFoods = async () => {
-      const token = localStorage.getItem("access-token");
-      console.log(token)
-      try {
-        const res = await axios.get("https://assignment-11-server-bay-psi.vercel.app/my-requests", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        setRequestedFoods(res.data);
-      } catch (error) {
-        console.error("Error fetching requested foods:", error);
-      }
-    };
+    useEffect(() => {
+        axios.get(`https://assignment-11-server-bay-psi.vercel.app/my-requests`, {
+            headers: {
+                Authorization: `Bearer ${ user.accessToken}`
+            }
+        })
+        .then(res=> setFoods(res.data))
 
-    if (user?.email) {
-      fetchRequestedFoods();
-    }
-  }, [user]);
+    }, [user])
 
-  return (
-    <div className=" min-h-screen">
-      <h2 className="text-4xl font-bold m-10 text-center">My Requested Foods</h2>
-      <div className="overflow-x-auto w-10/12 mx-auto">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>SL</th>
-              <th>Donor Name</th>
-              <th>Pickup Location</th>
-              <th>Expire Date</th>
-              <th>Request Date</th>
-            </tr>
-          </thead>
-          <tbody>
-            {requestedFoods.map((food, index) => (
-              <tr key={food._id}>
-                <td>{index + 1}</td>
-                <td>{food.donorName || "N/A"}</td>
-                <td>{food.location}</td>
-                <td>{new Date(food.expireDate).toLocaleDateString()}</td>
-                <td>{new Date(food.requestedAt || food.updatedAt || food._id.getTimestamp()).toLocaleDateString()}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {requestedFoods.length === 0 && <p className="text-center mt-4">No food requests found.</p>}
-      </div>
-    </div>
-  );
+
+    return (
+       <div className=' min-h-screen'>
+        <h1 className=' text-7xl text-center my-24'>My riequested Foods</h1>
+         <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-11/12 mx-auto'>
+            {
+                foods.map(food => <RequestedFoodCard food={food} key={food._id} setFoods={setFoods} ></RequestedFoodCard>)
+            }
+        </div>
+       </div>
+    );
 };
 
 export default MyFoodRequest;

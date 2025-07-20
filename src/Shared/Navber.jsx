@@ -77,10 +77,10 @@ const Navber = () => {
             <div className="navbar-end gap-1.5">
 
                 {user ?
-                    <button onClick={handleSignOut} className='btn btn-primary'>Sign Out</button>
+                    <button onClick={handleSignOut} className='btn btn-primary btn-xs'>Sign Out</button>
 
                     :
-                    <Link to="/login" className="btn btn-primary">Login</Link>
+                    <Link to="/login" className="btn btn-primary btn-xs">Login</Link>
                 }
 
                 {/* Profile Dropdown */}
