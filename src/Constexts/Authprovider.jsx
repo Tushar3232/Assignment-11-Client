@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { AuthContext } from './AuthContext';
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider} from 'firebase/auth';
 import { auth } from '../firebase/firebase.init';
 import axios from 'axios';
+
+const provider = new GoogleAuthProvider();
 
 const Authprovider = ({ children }) => {
     const [user, setUser] = useState({});
@@ -25,6 +27,31 @@ const Authprovider = ({ children }) => {
         setLoding(true)
         return signOut(auth)
     }
+ 
+    // Google Sign in 
+    const GoogleSignin = () => {
+  return signInWithPopup(auth, provider)
+    .then((result) => {
+      const loggedUser = result.user;
+      const userData = {
+        name: loggedUser.displayName,
+        email: loggedUser.email,
+        photoURL: loggedUser.photoURL,
+        role: 'user'
+      };
+
+      // ✅ Check user exists and save to MongoDB if new
+      axios.post('https://assignment-11-server-bay-psi.vercel.app/signUp-user', userData)
+        .then((res) => {
+          console.log('User info saved (if new):', res.data);
+        });
+
+      return loggedUser;
+    })
+    .catch((error) => {
+      console.error("Google Sign-In Error", error);
+    });
+};
 
 
     // Objerber setup 
@@ -54,7 +81,8 @@ const Authprovider = ({ children }) => {
         loding,
         CreateUser,
         SigninUser,
-        SignOutUser
+        SignOutUser,
+        GoogleSignin
     }
     return (
         <AuthContext value={authData}>
