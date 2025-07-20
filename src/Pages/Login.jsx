@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../Constexts/AuthContext';
-import { useNavigate } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Login = () => {
@@ -81,6 +81,9 @@ const Login = () => {
               {loading ? 'Logging in...' : 'Login'}
             </button>
           </form>
+          <div className=' mt-5'>
+            If you have not account click to <Link to={"/register"} className=' text-blue-600 hover:underline'>Register</Link>
+          </div>
         </div>
       </div>
     </div>

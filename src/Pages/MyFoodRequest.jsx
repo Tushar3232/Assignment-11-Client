@@ -28,9 +28,9 @@ const MyFoodRequest = () => {
   }, [user]);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4">My Requested Foods</h2>
-      <div className="overflow-x-auto">
+    <div className=" min-h-screen">
+      <h2 className="text-4xl font-bold m-10 text-center">My Requested Foods</h2>
+      <div className="overflow-x-auto w-10/12 mx-auto">
         <table className="table w-full">
           <thead>
             <tr>
