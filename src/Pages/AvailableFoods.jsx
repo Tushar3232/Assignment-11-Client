@@ -7,7 +7,7 @@ const AvailableFoods = () => {
     console.log(AvailableFoods)
     return (
         <div className=' min-h-screen'>
-            <h1 className=' text-7xl text-center my-16'>Available Foods</h1>
+            <h1 className=' text-7xl text-center my-30'>Available Foods</h1>
           <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-3.5 '>
               {
 

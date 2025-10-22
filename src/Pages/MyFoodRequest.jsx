@@ -22,7 +22,7 @@ const MyFoodRequest = () => {
 
     return (
        <div className=' min-h-screen'>
-        <h1 className=' text-7xl text-center my-24'>My riequested Foods</h1>
+        <h1 className=' text-7xl text-center my-30'>My riequested Foods</h1>
          <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-11/12 mx-auto'>
             {
                 foods.map(food => <RequestedFoodCard food={food} key={food._id} setFoods={setFoods} ></RequestedFoodCard>)

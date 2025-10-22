@@ -14,14 +14,14 @@ const FeaturedFoods = () => {
    
     return (
         <div>
-            <h1 className=' text-7xl text-center my-24'>Available Hight Quantity Foods </h1>
+            <h1 className=' text-6xl font-bold text-center my-24'>Hight Quantity <br /> Foods </h1>
             <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-10/12 mx-auto'>
                 {
                     featuredFoods.map(featuredFood=> <FeaturedFood featuredFood={featuredFood} key={featuredFood._id}></FeaturedFood>)
                 }
                
             </div>
-                <div className="text-center my-10">
+                <div className="text-center max-w-9/12 mx-auto my-10">
                 <Link
                     to="/availableFoods"
                     className="inline-block bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-6 rounded-lg transition-all duration-300"
