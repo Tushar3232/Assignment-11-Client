@@ -14,6 +14,7 @@ import UpdateFood from "../Pages/UpdateFood";
 import MyFoodRequest from "../Pages/MyFoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import UserDashboard from "../Pages/Dashboard/UserDashboard";
+import Blogs from "../Pages/Blogs";
 
 
 
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
           element: <PrivateRoute>
             <MyFoodRequest></MyFoodRequest>
           </PrivateRoute>
+        },
+        {
+          path:"/bogs",
+          element: <Blogs></Blogs>
         }
     ]
   },

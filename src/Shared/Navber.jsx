@@ -1,122 +1,116 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router';
-import { AuthContext } from '../Constexts/AuthContext';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Constexts/AuthContext";
+import axios from "axios";
+import GuestLinks from "./NavComponent/GuestLinks";
+import UserLinks from "./NavComponent/UserLinks";
+import ProfileDropdown from "../Componeants/ProfileDropdown"; // ✅ নতুন component import
 
 const Navber = () => {
-    const { user, SignOutUser } = useContext(AuthContext);
-    const [profil, setProfil] = useState(null);
+  const { user, SignOutUser } = useContext(AuthContext);
+  const [profil, setProfil] = useState(null);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            if (user?.accessToken) {
-                try {
-                    const res = await axios.get(`https://assignment-11-server-bay-psi.vercel.app/my-profile`, {
-                        headers: { Authorization: `Bearer ${user.accessToken}` }
-                    });
-                    setProfil(res.data);
-                } catch (err) {
-                    console.error("❌ Error fetching profile:", err);
-                }
-            }
-        };
-        fetchProfile();
-    }, [user]);
-
-    const handleSignOut = () => {
-        SignOutUser()
-            .then(() => alert("Sign out successful"))
-            .catch((error) => alert(error.message));
+  // ✅ Fetch user profile from backend
+  useEffect(() => {
+    const fetchProfile = async () => {
+      if (user?.accessToken) {
+        try {
+          const res = await axios.get(
+            `https://assignment-11-server-bay-psi.vercel.app/my-profile`,
+            { headers: { Authorization: `Bearer ${user.accessToken}` } }
+          );
+          setProfil(res.data);
+        } catch (err) {
+          console.error("❌ Error fetching profile:", err);
+        }
+      }
     };
+    fetchProfile();
+  }, [user]);
 
-    const getActiveClass = ({ isActive }) =>
-        isActive ? "text-white font-bold underline" : "text-gray-800";
+  // ✅ user login করলে dashboard এ পাঠাও
+  useEffect(() => {
+    if (user) {
+      navigate("/user-dashboard");
+    }
+  }, [user, navigate]);
 
-    const navLinks = (
-        <>
-            <NavLink to="/" className={getActiveClass}>Home</NavLink>
-            <NavLink to="/addfood" className={getActiveClass}>Add Food</NavLink>
-            <NavLink to="/availableFoods" className={getActiveClass}>Available Foods</NavLink>
-            <NavLink to="/myfoods" className={getActiveClass}>My Foods</NavLink>
-            <NavLink to="/myfoddrequsted" className={getActiveClass}>My Requested Foods</NavLink>
-            <NavLink to="/user-dashboard" className={getActiveClass}>/user-dashboard</NavLink>
-        </>
-    );
+  // ✅ Smooth scroll handler
+  const handleScroll = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
-    return (
-        <div className='fixed top-0 left-0 w-full z-50 bg-green-600  shadow-sm'>
-            <div className="navbar max-w-9/12 mx-auto">
-                <div className="navbar-start">
-                    <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round"
-                                    strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
-                            </svg>
-                        </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-                            {navLinks}
-                        </ul>
-                    </div>
-                    <a className="font-bold text-2xl ml-1.5">Share Food Bite</a>
-                </div>
+  // ✅ SignOut function
+  const handleSignOut = () => {
+    SignOutUser()
+      .then(() => alert("Sign out successful"))
+      .catch((error) => alert(error.message));
+  };
 
-                <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1 gap-5">
-                        {navLinks}
-                    </ul>
-                </div>
-
-                <div className="navbar-end gap-1.5">
-                    {/* {user ?
-                        <button onClick={handleSignOut} className='btn btn-primary btn-xs'>Sign Out</button>
-                        :
-                        <Link to="/login" className="btn btn-primary btn-xs">Login</Link>
-                    } */}
-
-                    {/* Profile Dropdown */}
-                    <div className="dropdown dropdown-hover dropdown-end mr-2">
-                        <div className="w-16 h-16 rounded-full border overflow-hidden">
-                            {
-                                user && profil?.photoURL ? (
-                                    <img
-                                        src={profil.photoURL}
-                                        alt="Profile"
-                                        className="w-full h-full object-cover"
-                                    />
-                                ) : (
-                                    <img
-                                        src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                                        alt="Default"
-                                        className="w-full h-full object-cover"
-                                    />
-                                )
-                            }
-                        </div>
-
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 gap-3 p-2 shadow">
-                            <div className='border-b border-dashed'>
-                                <h3 className='text-center text-2xl font-medium'>Name: {profil?.name} </h3>
-                                <h4>{profil?.email}</h4>
-                            </div>
-
-                            <li>
-                                {user ?
-                                    <button onClick={handleSignOut} className='btn btn-xs text-white bg-blue-600'>Sign Out</button>
-                                    :
-                                    <Link to="/login" className="btn btn-xs text-white bg-blue-600">Login</Link>
-                                }
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+  return (
+    <div className="fixed top-0 left-0 w-full z-50 bg-green-600 shadow-md">
+      <div className="navbar max-w-9/12 mx-auto text-white">
+        {/* Navbar Start */}
+        <div className="navbar-start">
+          {/* Mobile Menu */}
+          <div className="dropdown">
+            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </div>
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black"
+            >
+              {user ? (
+                <UserLinks />
+              ) : (
+                <GuestLinks handleScroll={handleScroll} />
+              )}
+            </ul>
+          </div>
+          <a className="font-bold text-gray-950 text-3xl ml-1.5"> Share Food Bite</a>
         </div>
-    );
+
+        {/* Navbar Center */}
+        <div className="navbar-center hidden lg:flex">
+          <ul className="menu menu-horizontal px-1 gap-5">
+            {user ? (
+              <UserLinks />
+            ) : (
+              <GuestLinks handleScroll={handleScroll} />
+            )}
+          </ul>
+        </div>
+
+        {/* Navbar End */}
+        <div className="navbar-end gap-2">
+          {/* ✅ Profile Dropdown Component */}
+          <ProfileDropdown
+            user={user}
+            profil={profil}
+            handleSignOut={handleSignOut}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Navber;

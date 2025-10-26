@@ -7,7 +7,7 @@ import axios from 'axios';
 const provider = new GoogleAuthProvider();
 
 const Authprovider = ({ children }) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const [loding, setLoding] = useState(true);
 
 

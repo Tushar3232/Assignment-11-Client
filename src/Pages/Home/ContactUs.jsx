@@ -25,7 +25,7 @@ const ContactUs = () => {
   };
 
   return (
-    <section id="contact" className="bg-white py-20 px-6 md:px-12">
+    <section id="contact-section" className="bg-white py-20 px-6 md:px-12">
       <h2 className=" text-5xl text-center my-19 font-bold">Contact <span className=" text-green-600">Us</span></h2>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* ✅ Left Side - Contact Info */}

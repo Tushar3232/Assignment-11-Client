@@ -58,7 +58,7 @@ const Register = () => {
               showConfirmButton: false,
               timer: 1500
             });
-            navigate('/');
+            navigate('/user-dashboard');
           })
           .catch(() => {
             setError('Failed to save user info to database');
@@ -79,7 +79,7 @@ const Register = () => {
         showConfirmButton: false,
         timer: 1500
       });
-      navigate('/');
+      navigate('/user-dashboard');
     });
   };
 

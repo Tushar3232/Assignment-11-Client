@@ -14,7 +14,7 @@ const fadeInUp = {
 
 const AboutUs = () => {
   return (
-    <section id="about" className="bg-white max-w-9/12 mx-auto py-20 px-6 ">
+    <section id="about-section" className="bg-white max-w-9/12 mx-auto py-20 px-6 ">
       {/* Title */}
       <motion.div
         initial="hidden"
