@@ -8,6 +8,7 @@ import ContactUs from './ContactUs';
 import AboutUs from './AboutUs';
 import OurSuccess from './OureSuccess';
 import OurVolunteers from './OurVolunteers';
+import CoverageSection from './CoverageSection';
 
 const Home = () => {
     return (
@@ -24,6 +25,7 @@ const Home = () => {
             <OurVolunteers></OurVolunteers>
 
             <ImportantInfoSection></ImportantInfoSection>
+            <CoverageSection></CoverageSection>
             <ContactUs></ContactUs>
         </div>
     );

@@ -14,7 +14,7 @@ const ImportantInfoSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <motion.h2
-          className="text-4xl font-bold text-center mb-8 text-rose-600"
+          className="text-4xl font-bold text-center mb-8 text-gray-900"
           initial={{ opacity: 0, y: -30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -39,7 +39,7 @@ const ImportantInfoSection = () => {
           {infoPoints.map((point, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-xl p-5 shadow-md border-l-4 border-rose-500"
+              className="bg-white rounded-xl p-5 shadow-md border-l-4 border-green-600"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: index * 0.2 }}
@@ -60,7 +60,7 @@ const ImportantInfoSection = () => {
         >
           <p className="text-xl font-semibold">
             Emergency Helpline:{' '}
-            <span className="text-red-600 font-bold">+880 1234 567 890</span>
+            <span className="text-green-600 font-bold">+880 1234 567 890</span>
           </p>
         </motion.div>
       </div>

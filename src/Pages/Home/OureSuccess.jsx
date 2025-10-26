@@ -26,7 +26,7 @@ const OurSuccess = () => {
   };
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 max-w-9/12 mx-auto ">
       <motion.div
         className="max-w-6xl mx-auto px-4 text-center"
         variants={container}
@@ -36,10 +36,10 @@ const OurSuccess = () => {
       >
         {/* Title */}
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-gray-800 mb-10"
+          className="text-3xl md:text-4xl font-bold text-gray-900 mb-10"
           variants={item}
         >
-          Our Success Stories 🌟
+          Our Success Stories 
         </motion.h2>
 
         {/* Description */}
@@ -88,7 +88,7 @@ const AnimatedCounter = ({ number, label }) => {
       animate={controls}
       whileHover={{ scale: 1.05 }}
     >
-      <h3 className="text-4xl font-extrabold text-orange-500 mb-2">
+      <h3 className="text-4xl font-extrabold text-green-600 mb-2">
         {inView ? <CountUp end={number} duration={2.5} /> : "0"}+
       </h3>
       <p className="text-gray-700 font-medium">{label}</p>

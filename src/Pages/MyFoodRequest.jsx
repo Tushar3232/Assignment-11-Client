@@ -1,34 +1,54 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Constexts/AuthContext';
 import axios from 'axios';
-import MyfoodCard from '../Componeants/MyfoodCard';
 import RequestedFoodCard from '../Componeants/RequestedFoodCard';
 
 const MyFoodRequest = () => {
-     const { user } = useContext(AuthContext);
-    const [foods, setFoods] = useState([])
-    console.log(foods)
+    const { user } = useContext(AuthContext);
+    const [foods, setFoods] = useState([]);
 
     useEffect(() => {
-        axios.get(`https://assignment-11-server-bay-psi.vercel.app/my-requests`, {
-            headers: {
-                Authorization: `Bearer ${ user.accessToken}`
+        if (!user?.accessToken) return;
+
+        const fetchRequests = async () => {
+            try {
+                const res = await axios.get(
+                    'https://assignment-11-server-bay-psi.vercel.app/my-requests',
+                    { headers: { Authorization: `Bearer ${user.accessToken}` } }
+                );
+                setFoods(res.data);
+            } catch (err) {
+                console.error('Error fetching requested foods:', err);
             }
-        })
-        .then(res=> setFoods(res.data))
+        };
 
-    }, [user])
-
+        fetchRequests();
+    }, [user]);
 
     return (
-       <div className=' min-h-screen'>
-        <h1 className=' text-7xl text-center my-30'>My riequested Foods</h1>
-         <div className=' grid sm:grid-cols-2 lg:grid-cols-3 gap-5 w-11/12 mx-auto'>
-            {
-                foods.map(food => <RequestedFoodCard food={food} key={food._id} setFoods={setFoods} ></RequestedFoodCard>)
-            }
+        <div className="min-h-screen pt-24 pb-16 px-4">
+            {/* Page Title */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl text-center font-bold my-12">
+                My <span className="text-green-600">Requested Foods</span>
+            </h1>
+
+            {/* Requested Foods Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+                {foods.length > 0 ? (
+                    foods.map(food => (
+                        <RequestedFoodCard
+                            food={food}
+                            key={food._id}
+                            setFoods={setFoods}
+                        />
+                    ))
+                ) : (
+                    <p className="text-center text-gray-500 col-span-full">
+                        You have not requested any foods yet.
+                    </p>
+                )}
+            </div>
         </div>
-       </div>
     );
 };
 

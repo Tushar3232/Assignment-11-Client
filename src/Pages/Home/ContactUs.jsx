@@ -26,7 +26,7 @@ const ContactUs = () => {
 
   return (
     <section id="contact" className="bg-white py-20 px-6 md:px-12">
-        <h2 className=" text-5xl text-center my-19 font-bold">Contact Us</h2>
+      <h2 className=" text-5xl text-center my-19 font-bold">Contact <span className=" text-green-600">Us</span></h2>
       <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
         {/* ✅ Left Side - Contact Info */}
         <div className="space-y-6">
@@ -40,23 +40,23 @@ const ContactUs = () => {
 
           <div className="space-y-4">
             <div className="flex items-center gap-3 group">
-              <MapPin className="text-[#1E1E1E] group-hover:text-[#FFB300] w-6 h-6 transition" />
+              <MapPin className="text-[#1E1E1E] group-hover:text-green-600 w-6 h-6 transition" />
               <span className="text-[#1E1E1E]">
                 Share Food Bite, Dhaka, Bangladesh
               </span>
             </div>
             <div className="flex items-center gap-3 group">
-              <Phone className="text-[#1E1E1E] group-hover:text-[#FFB300] w-6 h-6 transition" />
+              <Phone className="text-[#1E1E1E] group-hover:text-green-600 w-6 h-6 transition" />
               <span className="text-[#1E1E1E]">+880 1234-567890</span>
             </div>
             <div className="flex items-center gap-3 group">
-              <MessageSquare className="text-[#1E1E1E] group-hover:text-[#FFB300] w-6 h-6 transition" />
+              <MessageSquare className="text-[#1E1E1E] group-hover:text-green-600 w-6 h-6 transition" />
               <span className="text-[#1E1E1E]">
                 WhatsApp: +880 9876-543210
               </span>
             </div>
             <div className="flex items-center gap-3 group">
-              <Mail className="text-[#1E1E1E] group-hover:text-[#FFB300] w-6 h-6 transition" />
+              <Mail className="text-[#1E1E1E] group-hover:text-green-600 w-6 h-6 transition" />
               <span className="text-[#1E1E1E]">contact@sharefoodbite.com</span>
             </div>
           </div>
@@ -78,7 +78,7 @@ const ContactUs = () => {
                 name="name"
                 required
                 placeholder="Enter your name"
-                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#FFB300]"
+                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
 
@@ -91,7 +91,7 @@ const ContactUs = () => {
                 name="email"
                 required
                 placeholder="Enter your email"
-                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#FFB300]"
+                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
 
@@ -104,7 +104,7 @@ const ContactUs = () => {
                 name="title"
                 required
                 placeholder="Subject"
-                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#FFB300]"
+                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
               />
             </div>
 
@@ -117,14 +117,14 @@ const ContactUs = () => {
                 required
                 rows="5"
                 placeholder="Write your message..."
-                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-[#FFB300]"
+                className="w-full border border-gray-300 bg-white text-[#1E1E1E] px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
               ></textarea>
             </div>
 
             <button
               type="submit"
               disabled={status === "sending"}
-              className="w-full bg-gray-800 text-orange-500 py-2 rounded hover:bg-black transition font-semibold"
+              className="w-full bg-white border border-green-600 text-gray-900 py-2 rounded hover:bg-green-600 transition font-semibold"
             >
               {status === "sending" ? "Sending..." : "Send Message"}
             </button>

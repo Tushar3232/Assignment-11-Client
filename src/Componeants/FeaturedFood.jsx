@@ -1,63 +1,58 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const FeaturedFood = ({featuredFood}) => {
+const FeaturedFood = ({ featuredFood }) => {
 
-    const {
+  const {
     foodName,
     image,
     location,
     quantity,
     expireDate,
-    notes,
+    
     _id,
     status,
   } = featuredFood;
 
   return (
-     <div
+    <div
       className="card bg-base-100 shadow-md hover:shadow-2xl transition duration-300 w-full max-w-3xl mx-auto 
-                 hover:scale-[1.02] border border-transparent hover:border-primary rounded-xl"
-    
+                 hover:scale-[1.02] rounded-xl"
+
     >
       <div className="flex flex-col lg:flex-row">
         {/* ---------- Image Section ---------- */}
         <figure
           className="w-full lg:w-1/3 max-h-60 overflow-hidden rounded-t-xl lg:rounded-l-xl lg:rounded-tr-none"
-         
+
         >
           <img
             src={image}
             alt={foodName}
             className="w-full h-full object-cover object-center"
             style={{ maxHeight: "240px" }}
-           
+
           />
         </figure>
 
         {/* ---------- Info Section ---------- */}
         <div className="card-body w-full lg:w-2/3 p-5">
-          <h2 className="card-title text-2xl font-bold text-primary mb-2">{foodName}</h2>
+          <h2 className="card-title text-2xl font-bold  mb-2">{foodName}</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm">
             <p><span className="font-semibold">📍 Location:</span> {location}</p>
             <p><span className="font-semibold">🗓️ Expire Date:</span> {expireDate}</p>
             <p><span className="font-semibold">📦 Quantity:</span> {quantity}</p>
-            
-           
-          </div>
 
-          {/* ---------- Notes Section ---------- */}
-          {notes && (
-            <p className="mt-2 text-sm"><span className="font-semibold">📝 Notes:</span> {notes}</p>
-          )}
+
+          </div>
 
           {/* ---------- Status & Button ---------- */}
           <div className="card-actions justify-between items-center mt-4">
             <div
               className={`badge text-white px-4 py-1 text-sm rounded 
               ${status === "available" ? "bg-green-500" : "bg-red-500"}`}
-              
+
             >
               {status}
             </div>

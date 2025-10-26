@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer footer-horizontal footer-center bg-base-200 text-base-content rounded p-10">
+            <footer className="footer footer-horizontal footer-center bg-green-600 text-base-content rounded p-10">
                 <h1 className=' text-3xl font-bold'>Share Food Bite</h1>
                 <nav className="grid grid-flow-col gap-4">
                    <Link to={"/"} className="link link-hover">Home</Link>

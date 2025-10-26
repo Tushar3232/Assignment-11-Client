@@ -30,7 +30,7 @@ const Navber = () => {
     };
 
     const getActiveClass = ({ isActive }) =>
-        isActive ? "text-orange-500 font-bold underline" : "text-gray-600";
+        isActive ? "text-white font-bold underline" : "text-gray-800";
 
     const navLinks = (
         <>
@@ -39,11 +39,12 @@ const Navber = () => {
             <NavLink to="/availableFoods" className={getActiveClass}>Available Foods</NavLink>
             <NavLink to="/myfoods" className={getActiveClass}>My Foods</NavLink>
             <NavLink to="/myfoddrequsted" className={getActiveClass}>My Requested Foods</NavLink>
+            <NavLink to="/user-dashboard" className={getActiveClass}>/user-dashboard</NavLink>
         </>
     );
 
     return (
-        <div className='fixed top-0 left-0 w-full z-50 bg-slate-200 shadow-sm'>
+        <div className='fixed top-0 left-0 w-full z-50 bg-green-600  shadow-sm'>
             <div className="navbar max-w-9/12 mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown">
@@ -69,11 +70,11 @@ const Navber = () => {
                 </div>
 
                 <div className="navbar-end gap-1.5">
-                    {user ?
+                    {/* {user ?
                         <button onClick={handleSignOut} className='btn btn-primary btn-xs'>Sign Out</button>
                         :
                         <Link to="/login" className="btn btn-primary btn-xs">Login</Link>
-                    }
+                    } */}
 
                     {/* Profile Dropdown */}
                     <div className="dropdown dropdown-hover dropdown-end mr-2">

@@ -14,7 +14,7 @@ const fadeInUp = {
 
 const AboutUs = () => {
   return (
-    <section id="about" className="bg-white py-20 px-6 md:px-12">
+    <section id="about" className="bg-white max-w-9/12 mx-auto py-20 px-6 ">
       {/* Title */}
       <motion.div
         initial="hidden"
@@ -23,8 +23,8 @@ const AboutUs = () => {
         variants={fadeInUp}
         className="max-w-6xl mx-auto text-center mb-12"
       >
-        <h2 className="text-4xl font-bold text-[#1E1E1E] mb-4">
-          About <span className="text-[#FFB300]">Share Food Bite</span>
+        <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          About <span className="text-green-600">Us</span>
         </h2>
         <p className="text-[#444444] text-lg max-w-3xl mx-auto">
           We believe no food should go to waste when someone nearby is hungry.

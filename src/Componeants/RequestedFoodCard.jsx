@@ -11,7 +11,7 @@ const RequestedFoodCard = ({ food }) => {
   } = food;
 
   return (
-    <div className="bg-white rounded-2xl shadow-md border border-green-400 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col">
+    <div className="bg-white rounded-2xl shadow-md  hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col">
 
       {/* Food Image */}
       <div className="h-52 w-full">

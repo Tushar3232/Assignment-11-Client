@@ -14,11 +14,11 @@ const OurVolunteers = () => {
   const volunteers = [vol1, vol2, vol3, vol4, vol5, vol6, vol7];
 
   return (
-    <section className=" max-w-9/12 mx-auto py-20 bg-white overflow-hidden">
+    <section className=" max-w-9/12 mx-auto py-20 overflow-hidden">
       <div className="max-w-6xl mx-auto text-center px-6 md:px-12">
         {/* Title */}
         <h2 className="text-4xl font-bold text-[#1E1E1E] mb-4">
-          Our <span className="text-orange-500">Volunteers</span>
+          Our <span className=" text-green-600">Volunteers</span>
         </h2>
         <p className="text-[#444444] max-w-3xl mx-auto mb-10">
           Meet the kind hearts who make our mission possible — 
@@ -41,7 +41,7 @@ const OurVolunteers = () => {
           {volunteers.map((img, index) => (
             <div
               key={index}
-              className="min-w-[180px] h-[180px] md:min-w-[220px] md:h-[220px] rounded-full overflow-hidden shadow-md border-4 border-orange-500"
+              className="min-w-[180px] h-[180px] md:min-w-[220px] md:h-[220px] rounded-full overflow-hidden shadow-md border-4 border-green-600"
             >
               <img
                 src={img}
@@ -54,7 +54,7 @@ const OurVolunteers = () => {
           {volunteers.map((img, index) => (
             <div
               key={`dup-${index}`}
-              className="min-w-[180px] h-[180px] md:min-w-[220px] md:h-[220px] rounded-full overflow-hidden shadow-md border-4 border-orange-500"
+              className="min-w-[180px] h-[180px] md:min-w-[220px] md:h-[220px] rounded-full overflow-hidden shadow-md border-4 border-green-600"
             >
               <img
                 src={img}

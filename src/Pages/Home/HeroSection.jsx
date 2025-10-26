@@ -68,7 +68,7 @@ const slides = [
                 </p>
                 <button
                   onClick={handleJoinClick}
-                  className="px-8 py-3 bg-red-600 hover:bg-red-700 rounded-full text-white text-lg transition-all duration-300 shadow-lg"
+                  className="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-lg font-semibold transition"
                 >
                   Join as Food Donor
                 </button>

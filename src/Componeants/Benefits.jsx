@@ -31,7 +31,7 @@ const cardVariants = {
 const Benefits = () => {
   return (
     <section className="bg-base-200 py-16">
-      <div className="container mx-auto px-4">
+      <div className="container max-w-9/12  mx-auto ">
         <motion.h2
           className="text-4xl font-bold text-center mb-12"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -39,7 +39,7 @@ const Benefits = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          Why Choose Us
+          Why <span className=" text-green-600">Choose</span> Us
         </motion.h2>
 
         <div className="grid md:grid-cols-3 gap-8">
@@ -52,7 +52,7 @@ const Benefits = () => {
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
             >
-              <h3 className="text-2xl font-semibold mb-3 text-indigo-600">{item.title}</h3>
+              <h3 className="text-2xl font-semibold mb-3 text-green-600">{item.title}</h3>
               <p className="text-gray-700">{item.description}</p>
             </motion.div>
           ))}

@@ -10,6 +10,8 @@ const Authprovider = ({ children }) => {
     const [user, setUser] = useState({});
     const [loding, setLoding] = useState(true);
 
+
+
     // Create user with email and pass
     const CreateUser = (email, password) => {
         setLoding(true)
